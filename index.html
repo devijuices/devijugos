@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Devi Juices</title>
+    <!-- Google Fonts: Playfair Display para elegancia, Inter para lectura -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Playfair+Display:ital,wght@0,700;1,700&display=swap" rel="stylesheet">
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        :root {
+            --rojo-nara: #ffffff; /* Blanco hueso muy claro */
+            --amarillo: #ffffff;   /* Crema suave / Arena */
+            --blanco: #ff95dc;
+            --oscuro: #000000;
+            --whatsapp-color: #25d366;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--blanco);
+            color: var(--oscuro);
+            scroll-behavior: smooth;
+        }
+
+        h1, h2, h3, .serif {
+            font-family: 'Playfair Display', serif;
+            color: var(--oscuro);
+        }
+
+        /* Animaciones */
+        .fade-in {
+            opacity: 0;
+            animation: fadeIn 0.8s ease-out forwards;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(15px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Botón de WhatsApp */
+        .whatsapp-float {
+            position: fixed;
+            bottom: 24px;
+            right: 24px;
+            background-color: var(--whatsapp-color);
+            color: white;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            z-index: 100;
+            transition: transform 0.3s ease;
+        }
+
+        .whatsapp-float:hover {
+            transform: scale(1.1);
+        }
+
+        /* Tarjetas */
+        .product-card {
+            background-color: var(--blanco);
+            border: 1px solid #f0f0f0;
+            transition: all 0.4s ease;
+        }
+
+        .product-card:hover {
+            border-color: var(--amarillo);
+            transform: translateY(-5px);
+        }
+
+        .img-placeholder {
+            background-color: var(--amarillo);
+        }
+
+        .logo-img {
+            height: 45px;
+            width: auto;
+            object-fit: contain;
+        }
+
+        /* Form Estilos */
+        .form-input {
+            width: 100%;
+            padding: 12px 16px;
+            border: 1px solid #e5e7eb;
+            border-radius: 12px;
+            background-color: #fcfcfc;
+            outline: none;
+            transition: border-color 0.3s ease;
+        }
+        
+        .form-input:focus {
+            border-color: var(--amarillo);
+        }
+
+        .category-header {
+            border-bottom: 1px solid var(--amarillo);
+            display: inline-block;
+            margin-bottom: 2rem;
+        }
+    </style>
+</head>
+<body class="overflow-x-hidden">
+
+    <!-- WhatsApp -->
+    <a href="https://wa.me/+51980942374" 
+       target="_blank" 
+       class="whatsapp-float">
+        <i data-lucide="message-circle" class="w-7 h-7 fill-current"></i>
+    </a>
+
+    <!-- Navigation -->
+    <header class="fixed top-0 w-full z-40 bg-white/95 backdrop-blur-sm border-b border-gray-50">
+        <nav class="max-w-7xl mx-auto px-6 py-3 flex justify-between items-center">
+            <a href="#" class="flex items-center gap-3">
+                <img src="img/logo.jpg" alt="Pulse & Nectar Logo" class="logo-img">
+            </a>
+            
+            <div class="flex gap-6 md:gap-10 text-[10px] font-bold uppercase tracking-widest">
+                <a href="#menu" class="hover:text-gray-500 transition">Menú</a>
+                <a href="#about" class="hover:text-gray-500 transition">Nosotros</a>
+                <a href="#contact" class="hover:text-gray-500 transition">Contacto</a>
+                <a href="https://wa.me/51900000000" class="bg-[#333] text-white px-4 py-2 rounded-lg hover:bg-black transition">Pedir</a>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Hero -->
+    <section class="pt-40 pb-20 px-6 bg-[var(--rojo-nara)]">
+        <div class="max-w-7xl mx-auto grid lg:grid-cols-2 gap-16 items-center">
+            <div class="fade-in">
+                <span class="text-[10px] font-bold uppercase tracking-[0.4em] text-gray-400 mb-6 block"> ¡Hola, que bueno tenerte por aquí!</span>
+                <h1 class="text-6xl md:text-8xl mb-8 leading-tight">El desayuno que te levanta <span class="italic font-normal">está</span> en DEVI.</h1>
+                <p class="text-gray-500 text-lg mb-10 max-w-sm">ELIGE Y DISFRUTA DE TU FAVORITO</p>
+                <div class="flex gap-4">
+                    <a href="#menu" class="bg-[var(--amarillo)] text-[var(--oscuro)] px-8 py-4 rounded-full text-[10px] font-bold uppercase tracking-widest hover:opacity-80 transition shadow-sm">Explorar Menú</a>
+                </div>
+            </div>
+            <div class="fade-in" style="animation-delay: 0.2s;">
+                <div class="rounded-[3rem] overflow-hidden shadow-sm aspect-[4/5] img-placeholder">
+                    <img src="img/portada.jpg" alt="Jugo fresco orgánico" class="w-full h-full object-cover">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Menú por Categorías -->
+    <section id="menu" class="py-24 px-6 bg-white">
+        <div class="max-w-7xl mx-auto">
+            
+            <!-- CATEGORÍA: JUGOS -->
+            <div class="mb-24">
+                <div class="flex justify-between items-end mb-12">
+                    <div>
+                        <h2 class="text-4xl md:text-5xl mb-2 italic category-header">Jugos Saludables</h2>
+                    </div>
+                    <a href="categoria_1.html" class="hidden md:flex items-center gap-2 text-[10px] font-bold uppercase tracking-[0.2em] text-gray-500 hover:text-black transition">
+                        Ver Colección Completa <i data-lucide="arrow-right" class="w-3 h-3"></i>
+                    </a>
+                </div>
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6" id="grid-jugos">
+                    <!-- Inyectado por JS -->
+                </div>
+                <div class="mt-8 md:hidden">
+                    <a href="category-jugos.html" class="block text-center py-4 border border-gray-100 rounded-xl text-[10px] font-bold uppercase tracking-widest">Ver todos los jugos</a>
+                </div>
+            </div>
+
+            <!-- CATEGORÍA: BATIDOS -->
+            <div class="mb-24">
+                <div class="flex justify-between items-end mb-12">
+                    <div>
+                        <h2 class="text-4xl md:text-5xl mb-2 italic category-header">Jugos con Leche</h2>
+                        <p class="text-gray-400 text-sm">Energía natural y texturas cremosas.</p>
+                    </div>
+                    <a href="#" class="hidden md:flex items-center gap-2 text-[10px] font-bold uppercase tracking-[0.2em] text-gray-500 hover:text-black transition">
+                        Ver Colección Completa <i data-lucide="arrow-right" class="w-3 h-3"></i>
+                    </a>
+                </div>
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6" id="grid-batidos">
+                    <!-- Inyectado por JS -->
+                </div>
+            </div>
+
+            <!-- CATEGORÍA: BOWLS & MÁS -->
+            <div class="mb-12">
+                <div class="flex justify-between items-end mb-12">
+                    <div>
+                        <h2 class="text-4xl md:text-5xl mb-2 italic category-header">Jugos Clásicos</h2>
+                        <p class="text-gray-400 text-sm">El desayuno perfecto para tu cuerpo.</p>
+                    </div>
+                    <a href="#" class="hidden md:flex items-center gap-2 text-[10px] font-bold uppercase tracking-[0.2em] text-gray-500 hover:text-black transition">
+                        Ver Colección Completa <i data-lucide="arrow-right" class="w-3 h-3"></i>
+                    </a>
+                </div>
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6" id="grid-bowls">
+                    <!-- Inyectado por JS -->
+                </div>
+            </div>
+    <!-- Sección de Contacto -->
+    <section id="contact" class="py-24 px-6 bg-white">
+        <div class="max-w-7xl mx-auto">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl md:text-5xl mb-4">Hablemos</h2>
+                <p class="text-gray-400 text-sm italic">¿Tienes dudas? Estamos aquí para ayudarte.</p>
+            </div>
+
+            <div class="grid lg:grid-cols-2 gap-12 items-start">
+                <div class="rounded-[2rem] overflow-hidden shadow-sm h-[450px] border border-gray-100">
+                    <a href="https://maps.app.goo.gl/mMtvM8iGNTimQXb77" target="_blank">
+    <img src="img/mapa.jpeg" width="100%" alt="Ver ubicación">
+</a>
+                </div>
+
+                <div class="bg-[var(--rojo-nara)] p-8 md:p-12 rounded-[2rem] border border-gray-50 shadow-sm">
+                    <form action="thanks.html" class="space-y-6">
+                        <div>
+                            <label class="text-[10px] font-bold uppercase tracking-widest text-gray-400 mb-2 block">Nombre completo</label>
+                            <input type="text" placeholder="Ej. Juan Pérez" class="form-input" required>
+                        </div>
+                        <div class="grid md:grid-cols-2 gap-6">
+                            <div>
+                                <label class="text-[10px] font-bold uppercase tracking-widest text-gray-400 mb-2 block">Teléfono</label>
+                                <input type="tel" placeholder="+51 900..." class="form-input" required>
+                            </div>
+                            <div>
+                                <label class="text-[10px] font-bold uppercase tracking-widest text-gray-400 mb-2 block">Email</label>
+                                <input type="email" placeholder="hola@ejemplo.com" class="form-input" required>
+                            </div>
+                        </div>
+                        <div>
+                            <label class="text-[10px] font-bold uppercase tracking-widest text-gray-400 mb-2 block">¿Qué jugo prefieres?</label>
+                            <select class="form-input cursor-pointer">
+                                <option value="" disabled selected>Selecciona tu favorito</option>
+                                <option value="pure-green">Verde Desintoxicante</option>
+                                <option value="sun-charge">Alto Rendimiento</option>
+                                <option value="ruby-roots">Jugo Digestivo</option>
+                                <option value="citrus-blast">Jugo para subir Defensas</option>
+                                <option value="citrus-blast">Jugos Clásicos</option>
+                                <option value="citrus-blast">Jugos con Leche</option>
+                            </select>
+                        </div>
+                        <button type="submit" class="w-full py-4 bg-[var(--oscuro)] text-white rounded-xl text-[10px] font-bold uppercase tracking-[0.2em] hover:bg-black transition-all shadow-md">
+                            Enviar Mensaje
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-[var(--oscuro)] text-white py-20 px-6">
+        <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-10">
+            <img src="img/logo.jpg">
+            
+            <div class="flex gap-10 text-[10px] font-bold uppercase tracking-widest">
+                <a href="#" class="hover:text-gray-400 transition">Instagram</a>
+                <a href="#" class="hover:text-gray-400 transition">TikTok</a>
+                <a href="#" class="hover:text-gray-400 transition">WhatsApp</a>
+            </div>
+
+            <p class="text-[10px] uppercase tracking-widest opacity-40">&copy; JUGUERÍA DEVI</p>
+        </div>
+    </footer>
+
+    <script>
+        const productos = [
+            { id: 1, name: "Jugo Verde Desintoxicante", cat: "jugos", price: "9.00", desc: "Apio, pepino, espinaca, jenjibre, piña.", img: "img/verde desintoxicante.jpeg"},
+            { id: 2, name: "Jugo Alto Rendimiento", cat: "jugos", price: "8.50", desc: "Zanahoria, plátano, leche, avena.", img: "img/alto rendimiento.jpeg"},
+            { id: 3, name: "Jugo Digestivo", cat: "jugos", price: "8.50", desc: "Zanahoria, piña, chía, naranja.", img: "img/digestivo.jpeg"},
+            { id: 5, name: "Mango con Leche", cat: "batidos", price: "12.00", desc: "Mango y leche.", img: "img/mango con leche.jpeg" },
+            { id: 6, name: "Jugo Especial", cat: "batidos", price: "13.50", desc: "Leche, plátano, papaya, huevo, algarrobina.", img: "img/especial.jpeg" },
+            { id: 8, name: "Jugo de Piña", cat: "bowls", price: "15.00", desc: "Piña Fresca.", img: "img/piña.jpeg" },
+            { id: 9, name: "Jugo de Papaya", cat: "bowls", price: "16.00", desc: "Papaya fresca.", img: "img/papaya.jpeg" },
+              ];
+
+        function createCard(p) {
+            return `
+                <div class="product-card p-4 rounded-3xl fade-in">
+                    <div class="aspect-square rounded-2xl overflow-hidden mb-6 img-placeholder">
+                        <img src="${p.img}" alt="${p.name}" class="w-full h-full object-cover opacity-90 transition-transform duration-500 hover:scale-110" loading="lazy">
+                    </div>
+                    <div class="flex justify-between items-center mb-2">
+                        <h3 class="font-bold text-lg">${p.name}</h3>
+                        <span class="text-sm text-gray-400 font-medium">$${p.price}</span>
+                    </div>
+                    <p class="text-sm text-gray-500 mb-6 line-clamp-2">${p.desc}</p>
+                    <a href="https://wa.me/51900000000?text=Quiero%20un%20${encodeURIComponent(p.name)}" 
+                       target="_blank"
+                       class="block text-center py-3 bg-[var(--amarillo)] text-[var(--oscuro)] rounded-xl text-[9px] font-bold uppercase tracking-widest hover:bg-opacity-80 transition shadow-sm">
+                        Pedir vía WhatsApp
+                    </a>
+                </div>
+            `;
+        }
+
+        function renderGrids() {
+            const grids = {
+                jugos: document.getElementById('grid-jugos'),
+                batidos: document.getElementById('grid-batidos'),
+                bowls: document.getElementById('grid-bowls'),
+                shots: document.getElementById('grid-shots')
+            };
+
+            // Limpiar y llenar solo con una muestra de cada uno para no sobrecargar la principal
+            Object.keys(grids).forEach(cat => {
+                if(!grids[cat]) return;
+                const filtered = productos.filter(p => p.cat === cat).slice(0, 4);
+                grids[cat].innerHTML = filtered.map(p => createCard(p)).join('');
+            });
+        }
+
+        window.onload = () => {
+            renderGrids();
+            if(window.lucide) window.lucide.createIcons();
+        };
+    </script>
+</body>
+</html>
